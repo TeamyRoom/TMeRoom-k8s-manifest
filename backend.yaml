@@ -16,7 +16,7 @@ spec:
         app: back
     spec:
       containers:
-        image: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-spring:latest
+      - image: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-spring:latest
         name: back
         ports:
         - containerPort: 8080

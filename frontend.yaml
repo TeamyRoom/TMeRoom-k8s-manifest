@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: front
+  name: front-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - image: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-front:latest
+        name: front
+        ports:
+        - containerPort: 80
+          name: front-container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: front
+  name: front-svc
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    targetPort: 80
+    port: 80
+  selector:
+    app: front

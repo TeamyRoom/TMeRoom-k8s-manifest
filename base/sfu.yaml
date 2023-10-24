@@ -25,6 +25,8 @@ spec:
         - containerPort: 443
           name: https
           protocol: TCP
+        - containerPort: 3005
+          name: sfu-container
 ---
 apiVersion: v1
 kind: Service
@@ -39,5 +41,8 @@ spec:
   - protocol: TCP
     targetPort: 443
     port: 443
+  - protocol: TCP
+    targetPort: 3005
+    port: 3005
   selector:
     app: sfu

@@ -44,7 +44,8 @@ stringData:
 
 ---
 
-# STUNner 서버 노출 (게이트웨이에 리소스 로딩)apiVersion: gateway.networking.k8s.io/v1beta1
+# STUNner 서버 노출 (게이트웨이에 리소스 로딩)
+apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: udp-gateway

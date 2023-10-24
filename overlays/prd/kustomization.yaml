@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-front
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-front
-  newTag: "48"
+  newTag: "49"
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-sfu
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-sfu
   newTag: "2"

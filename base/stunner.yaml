@@ -84,3 +84,5 @@ spec:
     - backendRefs:
         - name: hls
           namespace: default
+        - name: sfu
+          namespace: default

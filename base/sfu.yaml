@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sfu
+  name: sfu-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfu
+  template:
+    metadata:
+      labels:
+        app: sfu
+    spec:
+      containers:
+      - image: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-sfu:latest
+        name: sfu
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sfu
+  name: sfu-svc
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    targetPort: 443
+    port: 443
+  selector:
+    app: sfu

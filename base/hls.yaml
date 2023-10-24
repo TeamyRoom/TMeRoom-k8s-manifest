@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hls
+  name: hls-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hls
+  template:
+    metadata:
+      labels:
+        app: hls
+    spec:
+      containers:
+      - image: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-hls:latest
+        name: hls
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+        - containerPort: 3000
+          name: hls-container
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sfu
+  name: sfu-svc
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    targetPort: 443
+    port: 443
+    name : https
+  - protocol: TCP
+    targetPort: 3000
+    port: 3000
+    name : hls
+  selector:
+    app: hls

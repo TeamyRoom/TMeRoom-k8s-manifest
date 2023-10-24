@@ -3,5 +3,6 @@ resources:
 - frontend.yaml
 - stunner.yaml
 - sfu.yaml
+- hls.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization

@@ -37,8 +37,10 @@ spec:
   - protocol: TCP
     targetPort: 80
     port: 80
+    name: front
   - protocol: TCP
     targetPort: 3099
     port: 3099
+    name: sfu
   selector:
     app: front

@@ -21,6 +21,8 @@ spec:
         ports:
         - containerPort: 80
           name: front-container
+        - containerPort: 3099
+          name: sfu-proxy
 ---
 apiVersion: v1
 kind: Service
@@ -35,5 +37,8 @@ spec:
   - protocol: TCP
     targetPort: 80
     port: 80
+  - protocol: TCP
+    targetPort: 3099
+    port: 3099
   selector:
     app: front

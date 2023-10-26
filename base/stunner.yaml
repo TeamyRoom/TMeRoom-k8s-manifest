@@ -82,8 +82,8 @@ spec:
     - name: tcp-gateway
   rules:
     - backendRefs:
-        - name: stunner
-          namespace: stunner
+        - name: sfu-svc
+          namespace: default
 
 ---
 # make sure the stunner service exists, otherwise the above route will be useless

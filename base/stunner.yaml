@@ -71,7 +71,6 @@ spec:
       protocol: TURN-TCP
 
 ---
-
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: UDPRoute
 metadata:
@@ -83,7 +82,21 @@ spec:
     - name: tcp-gateway
   rules:
     - backendRefs:
-        - name: hls
-          namespace: default
-        - name: sfu
-          namespace: default
+        - name: stunner
+          namespace: stunner
+
+---
+# make sure the stunner service exists, otherwise the above route will be useless
+apiVersion: v1
+kind: Service
+metadata:
+  name: stunner
+  namespace: stunner
+spec:
+  selector:
+    app: stunner
+  ports:
+  - port: 3478
+    protocol: UDP
+    targetPort: 3478
+  type: ClusterIP

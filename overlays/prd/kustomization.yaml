@@ -9,7 +9,7 @@ images:
   newTag: "70.3"
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-hls
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-hls
-  newTag: "13.3"
+  newTag: "14.1"
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-sfu
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-sfu
   newTag: "12.1"

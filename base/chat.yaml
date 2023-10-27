@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: chat
+  name: chat-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat
+  template:
+    metadata:
+      labels:
+        app: chat
+    spec:
+      containers:
+      - image: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-chat:latest
+        name: chat
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+        - containerPort: 3002
+          name: chat-container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: chat
+  name: chat-svc
+  namespace: default
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    targetPort: 443
+    port: 443
+    name: https
+  - protocol: TCP
+    targetPort: 3002
+    port: 3002
+    name: chat
+  selector:
+    app: chat

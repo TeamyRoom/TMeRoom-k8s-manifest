@@ -15,6 +15,6 @@ images:
   newTag: "13.1"
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-spring
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-spring
-  newTag: "21.1"
+  newTag: "22.1"
 resources:
 - ../../base

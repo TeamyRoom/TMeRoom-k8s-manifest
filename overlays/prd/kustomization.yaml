@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-chat
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-chat
-  newTag: "5.1"
+  newTag: "6.1"
 - name: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-front
   newName: 135685504741.dkr.ecr.ap-northeast-2.amazonaws.com/tmeroom-front
   newTag: "97.3"

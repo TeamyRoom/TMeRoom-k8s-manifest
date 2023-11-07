@@ -1,12 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app: chat
-  name: chat-deploy
+  name: chat
   namespace: default
 spec:
-  replicas: 1
+  serviceName: "chat-svc"
+  replicas: 4
   selector:
     matchLabels:
       app: chat
@@ -21,12 +22,11 @@ spec:
         ports:
         - containerPort: 80
           name: http
-          protocol: TCP
         - containerPort: 443
           name: https
-          protocol: TCP
         - containerPort: 3002
           name: chat-container
+  volumeClaimTemplates: [] # 여기에 PersistentVolumeClaim을 정의해야 합니다.
 ---
 apiVersion: v1
 kind: Service
@@ -39,12 +39,13 @@ spec:
   type: ClusterIP
   ports:
   - protocol: TCP
-    targetPort: 443
     port: 443
+    targetPort: https
     name: https
   - protocol: TCP
-    targetPort: 3002
     port: 3002
+    targetPort: chat-container
     name: chat
+  clusterIP: None
   selector:
     app: chat
